@@ -1,5 +1,3 @@
-
-
 // "use client";
 
 // import React, { useState } from "react";
@@ -129,7 +127,6 @@
 //   );
 // }
 
-
 // "use client";
 
 // import React, { useState } from "react";
@@ -174,7 +171,6 @@
 //   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 //   const [mobileOpen, setMobileOpen] = useState<string | null>(null);
 //     const [priceInput, setPriceInput] = useState("");
-
 
 //   return (
 //     <>
@@ -249,7 +245,7 @@
 //                   )}
 //                 </div>
 //               ))}
-           
+
 //             </div>
 //           </PopoverContent>
 //         </Popover>
@@ -293,7 +289,6 @@
 //     </>
 //   );
 // }
-
 
 //////////////////////
 
@@ -570,10 +565,10 @@
 //                   <div
 //                     className={cn(
 //                       "flex items-center justify-between px-6 py-3 cursor-pointer transition-all",
-//                       "group-hover/category:bg-gray-50",
+//                       "group-hover/category:bg-gray-200",
 //                       openSubmenu === cat.id
 //                         ? "bg-blue-50 text-blue-600 font-semibold"
-//                         : "hover:bg-gray-50 hover:text-blue-600"
+//                         : "hover:bg-gray-200 hover:text-blue-600"
 //                     )}
 //                   >
 //                     <ChevronLeft className="h-4 w-4 text-gray-500" />
@@ -701,7 +696,7 @@
 //                 "flex items-center justify-between  w-70 cursor-pointer gap-2 px-5 py-2 text-base font-medium transition",
 //                 desktopOpen ? "text-blue-600" : "hover:text-blue-600"
 //               )}>
-//               <ChevronDown className="h-4 w-4" /> Categories 
+//               <ChevronDown className="h-4 w-4" /> Categories
 //               </button>
 //             </PopoverTrigger>
 //     <PopoverContent
@@ -746,7 +741,7 @@
 //               : "hover:text-blue-600"
 //           )}
 //         >
-//           <Checkbox 
+//           <Checkbox
 //             checked={selectedItems.includes(sub.id)}
 //             onCheckedChange={(checked) => {
 //               if (checked) {
@@ -1149,7 +1144,6 @@
 //   );
 // }
 
-
 //////////////////////////////////
 
 // "use client";
@@ -1254,7 +1248,7 @@
 //                 "px-5 py-3 font-medium rounded-lg transition-all cursor-pointer",
 //                 openSubmenu === cat.id
 //                   ? "text-blue-600 bg-blue-50"
-//                   : "hover:text-blue-600 hover:bg-gray-50"
+//                   : "hover:text-blue-600 hover:bg-gray-200"
 //               )}
 //             >
 //               {cat.label}
@@ -1275,7 +1269,7 @@
 //                         "flex items-center gap-3 cursor-pointer p-3 rounded-lg transition-all select-none",
 //                         isSelected(sub.id)
 //                           ? "text-blue-600 font-semibold bg-blue-50"
-//                           : "hover:bg-gray-50"
+//                           : "hover:bg-gray-200"
 //                       )}
 //                     >
 //                       <Checkbox
@@ -1339,7 +1333,7 @@
 //                           "flex items-center gap-3 p-3 rounded-lg",
 //                           isSelected(sub.id)
 //                             ? "text-blue-600 font-medium bg-blue-50"
-//                             : "hover:bg-gray-50"
+//                             : "hover:bg-gray-200"
 //                         )}
 //                       >
 //                         <Checkbox
@@ -1380,17 +1374,17 @@ const categories = [
   {
     id: "price",
     label: "Shop By Price",
-    href: "/shop/price"
+    href: "/shop/price",
   },
   {
     id: "brand",
     label: "Shop By Brands",
-    href: "/shop/brands"
+    href: "/shop/brands",
   },
   {
     id: "processor",
     label: "Shop By Processor",
-    href: "/shop/processor"
+    href: "/shop/processor",
   },
 ];
 
@@ -1400,10 +1394,9 @@ export default function CategoryMenu() {
 
   return (
     <>
-    
       {/* DESKTOP — HOVER MENU */}
       <div
-        className="hidden md:block relative z-50"
+        className='hidden md:block relative z-50'
         onMouseEnter={() => setDesktopOpen(true)}
         onMouseLeave={() => setDesktopOpen(false)}
       >
@@ -1417,22 +1410,25 @@ export default function CategoryMenu() {
           aria-expanded={desktopOpen}
         >
           All Categories
-          <ChevronDown className={cn("h-5 w-5 transition-transform", desktopOpen && "rotate-180")} />
+          <ChevronDown
+            className={cn(
+              "h-5 w-5 transition-transform",
+              desktopOpen && "rotate-180"
+            )}
+          />
         </button>
 
         {/* Dropdown Menu */}
         {desktopOpen && (
-          <div
-            className="absolute top-full right-5 w-64 bg-white border border-gray-200 overflow-hidden"
-          >
-            <div className="p-2">
+          <div className='absolute top-full right-5 w-64 bg-white border border-gray-200 overflow-hidden'>
+            <div className='p-2'>
               {categories.map((cat) => (
                 <a
                   key={cat.id}
                   href={cat.href}
                   // REMOVED `flex flex-col` as it was unnecessary and might cause alignment issues.
                   // INCREASED vertical padding from py-3 to py-4 for more buffer.
-className="block px-5 py-4 font-medium leading-relaxed hover:text-blue-600 hover:bg-blue-50 transition-all"
+                  className='block px-5 py-4 font-medium leading-relaxed hover:text-blue-600 hover:bg-blue-50 transition-all'
                 >
                   {cat.label}
                 </a>
@@ -1443,38 +1439,40 @@ className="block px-5 py-4 font-medium leading-relaxed hover:text-blue-600 hover
       </div>
 
       {/* MOBILE — CLICK MENU */}
-      <div className="md:hidden px-4 py-4 border-b">
+      <div className='md:hidden px-4 py-4 border-b'>
         <button
           // INCREASED vertical padding from py-3 to py-4
-          className="w-full flex justify-between items-center py-4 font-bold text-lg"
+          className='w-full flex justify-between items-center py-4 font-bold text-lg'
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           All Categories
           <ChevronDown
-            className={cn("h-5 w-5 transition-transform", mobileOpen && "rotate-180")}
+            className={cn(
+              "h-5 w-5 transition-transform",
+              mobileOpen && "rotate-180"
+            )}
           />
         </button>
 
         {mobileOpen && (
-          <div className="mt-3 space-y-2">
+          <div className='mt-3 space-y-2'>
             {categories.map((cat) => (
               <a
                 key={cat.id}
                 href={cat.href}
                 // INCREASED vertical padding from py-3 to py-4
-                className="block px-4 py-4 font-medium rounded-lg hover:text-blue-600 hover:bg-blue-50 transition-all"
+                className='block px-4 py-4 font-medium rounded-lg hover:text-blue-600 hover:bg-blue-50 transition-all'
               >
                 {cat.label}
               </a>
             ))}
           </div>
         )}
-
-        
       </div>
-<div className=' flex md:hidden items-center cursor-pointer hover:text-blue-600 gap-2'>
-              <Phone  className="h-5 w-5"/>(+91) 9321888689 
-            </div>
+      <div className=' flex md:hidden items-center cursor-pointer hover:text-blue-600 gap-2'>
+        <Phone className='h-5 w-5' />
+        +91 9321888689
+      </div>
     </>
   );
 }

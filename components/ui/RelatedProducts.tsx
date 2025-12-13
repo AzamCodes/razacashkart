@@ -38,6 +38,7 @@ export default function RelatedProducts({
     >
       {products.map((product) => (
         <ProductCard
+          className='bg-white'
           key={product.id}
           id={product.id}
           name={product.name}

@@ -71,7 +71,7 @@
 //         {/* Custom Nav Up Button */}
 //         {/* <button
 //           onClick={() => thumbSwiperRef.current?.slidePrev()}
-//           className='absolute top-0 left-1/2 -translate-x-1/2 z-30 bg-white rounded-full p-2 shadow-xl hover:bg-gray-50 transition-colors disabled:opacity-50'
+//           className='absolute top-0 left-1/2 -translate-x-1/2 z-30 bg-white rounded-full p-2 shadow-xl hover:bg-gray-200 transition-colors disabled:opacity-50'
 //           aria-label='Previous image'
 //           disabled={isBeginning}
 //         >
@@ -131,7 +131,7 @@
 //         {/* Custom Nav Down Button */}
 //         {/* <button
 //           onClick={() => thumbSwiperRef.current?.slideNext()}
-//           className='absolute bottom-0 left-1/2 -translate-x-1/2 z-30 bg-white rounded-full p-2 shadow-xl hover:bg-gray-50 transition-colors disabled:opacity-50'
+//           className='absolute bottom-0 left-1/2 -translate-x-1/2 z-30 bg-white rounded-full p-2 shadow-xl hover:bg-gray-200 transition-colors disabled:opacity-50'
 //           aria-label='Next image'
 //           disabled={isEnd}
 //         >
@@ -157,7 +157,7 @@
 //           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
 //         }}
 //         modules={[FreeMode, Thumbs]}
-//         className='h-full flex-1 w-full bg-gray-50 rounded-lg'
+//         className='h-full flex-1 w-full bg-gray-200 rounded-lg'
 //       >
 //         {images.map((img, idx) => (
 //           <SwiperSlide key={idx}>
@@ -344,11 +344,11 @@ function ProductImageGalleryDesktop({ images }: ProductImageGalleryProps) {
           freeMode={true}
           watchSlidesProgress={true}
           modules={[FreeMode, Thumbs]}
-          className='thumb-swiper w-full h-full'
+          className='thumbprod w-full h-full'
         >
           {images.map((img, idx) => (
             <SwiperSlide key={idx}>
-              <div className='cursor-pointer rounded-lg overflow-hidden border-2 border-gray-200 h-full w-full [&.swiper-slide-thumb-active]:border-blue-500'>
+              <div className='cursor-pointer rounded-lg overflow-hidden border-2 border-gray-200 h-full w-full [&.swiper-slide-thumb-active]:border-blue-500!'>
                 <Image
                   src={img.url}
                   alt={img.alt}
@@ -380,7 +380,7 @@ function ProductImageGalleryDesktop({ images }: ProductImageGalleryProps) {
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
         modules={[FreeMode, Thumbs]}
-        className='h-full flex-1 w-full bg-gray-50 rounded-lg'
+        className='h-full flex-1 w-full bg-gray-200 rounded-lg'
       >
         {images.map((img, idx) => (
           <SwiperSlide key={idx}>
@@ -428,7 +428,7 @@ function ProductImageGalleryMobile({ images }: ProductImageGalleryProps) {
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
         }}
         modules={[FreeMode, Thumbs]}
-        className='h-full flex-1 w-full bg-gray-50 rounded-lg'
+        className='h-full flex-1 w-full bg-gray-200 rounded-lg'
       >
         {images.map((img, idx) => (
           <SwiperSlide key={idx}>
@@ -476,11 +476,11 @@ function ProductImageGalleryMobile({ images }: ProductImageGalleryProps) {
           freeMode={true}
           watchSlidesProgress={true}
           modules={[FreeMode, Thumbs]}
-          className='thumb-swiper w-full h-full px-10' // <--- Added horizontal padding for buttons
+          className='thumbprod w-full h-full px-10' // <--- Added horizontal padding for buttons
         >
           {images.map((img, idx) => (
             <SwiperSlide key={idx}>
-              <div className='cursor-pointer rounded-lg overflow-hidden border-2 border-gray-200 h-full w-full aspect-square [&.swiper-slide-thumb-active]:border-blue-500'>
+              <div className='cursor-pointer rounded-lg overflow-hidden border-2 border-gray-200 h-full w-full aspect-square [&.swiper-slide-thumb-active]:border-blue-500!'>
                 <Image
                   src={img.url}
                   alt={img.alt}

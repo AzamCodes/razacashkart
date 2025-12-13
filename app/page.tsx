@@ -10,16 +10,15 @@ import ProductSwiper from "@/components/ProductSwiper";
 
 export default function Home() {
   return (
-    <div className="flex w-full items-center flex-col justify-center bg-zinc-50 font-sans dark:bg-black">
-     {/* <Navbar/> */}
-     <NavbarF/>
-     <HeroSlider/>
-     <BrandSlider/>
-     <BestSeller/>
-     <GoogleReviewsSection/>
-     <ProductSwiper/>
-     <HappyCustomersGallery/>
-     <FAQComponent/>
+    <div className='flex w-full items-center flex-col justify-center bg-zinc-50 font-sans dark:bg-black'>
+      {/* <Navbar/> */}
+      <HeroSlider />
+      <BestSeller />
+      <BrandSlider />
+      {/* <GoogleReviewsSection/> */}
+      <ProductSwiper />
+      <HappyCustomersGallery />
+      {/* <FAQComponent /> */}
     </div>
   );
 }

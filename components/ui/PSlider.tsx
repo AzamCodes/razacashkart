@@ -44,7 +44,7 @@
 //   showSeeAll = false,
 //   onSeeAllClick,
 //   className = "",
-//   containerClassName = "w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-8",
+//   containerClassName = "w-full bg-gray-200 py-12 px-4 sm:px-6 lg:px-8",
 // }: PSliderProps) {
 //   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
 //   const [isBeginning, setIsBeginning] = useState(true);
@@ -52,7 +52,7 @@
 
 //   return (
 //     <div className={containerClassName}>
-//       <div className='max-w-7xl mx-auto'>
+//       <div className='xl:max-w-7xl max-w-[90vw] mx-auto'>
 //         {(title || showSeeAll) && (
 //           <div className='flex items-center justify-between mb-6'>
 //             {title && (
@@ -76,7 +76,7 @@
 //           {!isBeginning && (
 //             <button
 //               onClick={() => swiperInstance?.slidePrev()}
-//               className='absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white rounded-full p-3 shadow-xl hover:bg-gray-50 transition-colors cursor-pointer'
+//               className='absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white rounded-full p-3 shadow-xl hover:bg-gray-200 transition-colors cursor-pointer'
 //             >
 //               <ChevronLeft className='w-4 h-4 lg:w-6 lg:h-6' />
 //             </button>
@@ -102,7 +102,7 @@
 //           {!isEnd && (
 //             <button
 //               onClick={() => swiperInstance?.slideNext()}
-//               className='absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white rounded-full p-3 shadow-xl hover:bg-gray-50 transition-colors cursor-pointer'
+//               className='absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white rounded-full p-3 shadow-xl hover:bg-gray-200 transition-colors cursor-pointer'
 //             >
 //               <ChevronRight className='w-4 h-4 lg:w-6 lg:h-6' />
 //             </button>
@@ -158,7 +158,7 @@ export default function PSlider({
   showSeeAll = false,
   onSeeAllClick,
   className = "",
-  containerClassName = "w-full bg-gray-50 py-12 px-4 sm:px-6 lg:px-8",
+  containerClassName = "w-full bg-gray-200 py-12 px-4 sm:px-6 lg:px-8",
 }: PSliderProps) {
   const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   const [isBeginning, setIsBeginning] = useState(true);
@@ -166,7 +166,7 @@ export default function PSlider({
 
   return (
     <div className={containerClassName}>
-      <div className='max-w-7xl mx-auto'>
+      <div className='xl:max-w-7xl max-w-[90vw] mx-auto'>
         {(title || showSeeAll) && (
           <div className='flex items-center justify-between mb-6'>
             {title && (
@@ -174,7 +174,7 @@ export default function PSlider({
                 {title}
               </h2>
             )}
-            {showSeeAll && (
+            {/* {showSeeAll && (
               <button
                 onClick={onSeeAllClick}
                 className='text-xs lg:text-sm text-gray-600 hover:text-gray-900 flex items-center gap-1 cursor-pointer'
@@ -182,7 +182,7 @@ export default function PSlider({
                 See All
                 <ChevronRight className='w-4 h-4' />
               </button>
-            )}
+            )} */}
           </div>
         )}
 
@@ -190,7 +190,7 @@ export default function PSlider({
           {!isBeginning && (
             <button
               onClick={() => swiperInstance?.slidePrev()}
-              className='absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white rounded-full p-3 shadow-xl hover:bg-gray-50 transition-colors cursor-pointer'
+              className='absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white rounded-full p-3 shadow-xl hover:bg-gray-200 transition-colors cursor-pointer'
             >
               <ChevronLeft className='w-4 h-4 lg:w-6 lg:h-6' />
             </button>
@@ -220,7 +220,7 @@ export default function PSlider({
           {!isEnd && (
             <button
               onClick={() => swiperInstance?.slideNext()}
-              className='absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white rounded-full p-3 shadow-xl hover:bg-gray-50 transition-colors cursor-pointer'
+              className='absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white rounded-full p-3 shadow-xl hover:bg-gray-200 transition-colors cursor-pointer'
             >
               <ChevronRight className='w-4 h-4 lg:w-6 lg:h-6' />
             </button>

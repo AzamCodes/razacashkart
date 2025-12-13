@@ -7,7 +7,7 @@ import ProductCard from "./ui/ProductCard";
 export default function ProductSwiper() {
   return (
     <PSlider
-      title="Trending Now"
+      title='Trending Now'
       showSeeAll={true}
       slidesPerView={2}
       spaceBetween={16}
@@ -19,6 +19,7 @@ export default function ProductSwiper() {
     >
       {products.map((product) => (
         <ProductCard
+          className='bg-white'
           key={product.id}
           id={product.id}
           name={product.name}

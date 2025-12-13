@@ -41,7 +41,7 @@
 //         </span>
 //       </div>
 //       <div className='grid grid-cols-2 gap-3'>
-//         <div className='bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-100'>
+//         <div className='bg-gray-200 rounded-lg p-3 shadow-sm border border-gray-100'>
 //           <div className='flex items-center gap-2 mb-1'>
 //             <Package className='w-5 h-5 text-gray-600' />
 //             <span className='text-xs text-gray-600 font-medium'>
@@ -53,7 +53,7 @@
 //           </p>
 //         </div>
 
-//         <div className='bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-100'>
+//         <div className='bg-gray-200 rounded-lg p-3 shadow-sm border border-gray-100'>
 //           <div className='flex items-center gap-2 mb-1'>
 //             <Tag className='w-5 h-5 text-gray-600' />
 //             <span className='text-xs text-gray-600 font-medium'>
@@ -63,7 +63,7 @@
 //           <p className='text-sm font-bold text-[#155DFC]'>{product.sku || "—"}</p>
 //         </div>
 
-//         <div className='bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-100'>
+//         <div className='bg-gray-200 rounded-lg p-3 shadow-sm border border-gray-100'>
 //           <div className='flex items-center gap-2 mb-1'>
 //             <Image
 //               src='/logo.png'
@@ -77,7 +77,7 @@
 //           <p className='text-sm font-bold text-[#155DFC]'>{product.brand}</p>
 //         </div>
 
-//         <div className='bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-100'>
+//         <div className='bg-gray-200 rounded-lg p-3 shadow-sm border border-gray-100'>
 //           <div className='flex items-center gap-2 mb-1'>
 //             <Star className='w-5 h-5 text-gray-600' />
 //             <span className='text-xs text-gray-600 font-medium'>Rating</span>
@@ -93,7 +93,7 @@
 //         )}&title=${encodeURIComponent(product.name)}`}
 //         className='cursor-pointer'
 //       >
-//         <button className='w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg cursor-pointer'>
+//         <button className='w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-md  cursor-pointer'>
 //           Order Now
 //         </button>
 //       </a>
@@ -145,7 +145,7 @@
 //       </h1>
 
 //       {/* Laptop Specifications */}
-//       <ul className='grid grid-cols-2 gap-3 text-sm text-gray-700 bg-gray-50 border border-gray-100 rounded-lg p-4'>
+//       <ul className='grid grid-cols-2 gap-3 text-sm text-gray-700 bg-gray-200 border border-gray-100 rounded-lg p-4'>
 //         <li className='flex items-center gap-2'>
 //           <Cpu className='w-4 h-4 text-blue-600' />
 //           <span className='font-medium'>Intel Core i5 (12th Gen)</span>
@@ -183,7 +183,7 @@
 //           typeof window !== "undefined" ? window.location.href : ""
 //         )}&title=${encodeURIComponent(product.name)}`}
 //       >
-//         <button className='w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg'>
+//         <button className='w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-md '>
 //           Order Now
 //         </button>
 //       </a>
@@ -191,7 +191,7 @@
 //       {/* Icon Info Boxes */}
 //       <div className='grid grid-cols-2 gap-3 pt-2'>
 //         {/* Availability */}
-//         <div className='bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-100'>
+//         <div className='bg-gray-200 rounded-lg p-3 shadow-sm border border-gray-100'>
 //           <div className='flex items-center gap-2 mb-1'>
 //             <Package className='w-5 h-5 text-gray-600' />
 //             <span className='text-xs text-gray-600 font-medium'>
@@ -204,7 +204,7 @@
 //         </div>
 
 //         {/* Product Code */}
-//         <div className='bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-100'>
+//         <div className='bg-gray-200 rounded-lg p-3 shadow-sm border border-gray-100'>
 //           <div className='flex items-center gap-2 mb-1'>
 //             <Tag className='w-5 h-5 text-gray-600' />
 //             <span className='text-xs text-gray-600 font-medium'>
@@ -217,7 +217,7 @@
 //         </div>
 
 //         {/* Brand */}
-//         <div className='bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-100'>
+//         <div className='bg-gray-200 rounded-lg p-3 shadow-sm border border-gray-100'>
 //           <div className='flex items-center gap-2 mb-1'>
 //             <Image
 //               src='/logo.png'
@@ -232,7 +232,7 @@
 //         </div>
 
 //         {/* Free Delivery (Replaced Rating) */}
-//         <div className='bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-100'>
+//         <div className='bg-gray-200 rounded-lg p-3 shadow-sm border border-gray-100'>
 //           <div className='flex items-center gap-2 mb-1'>
 //             <Truck className='w-5 h-5 text-gray-600' />
 //             <span className='text-xs text-gray-600 font-medium'>Delivery</span>
@@ -295,7 +295,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         {/* Icon Info Boxes */}
         <div className='grid grid-cols-2 w-full flex-1 gap-3 pt-0'>
           {/* Product Code */}
-          <div className='bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-100'>
+          <div className='bg-gray-200 rounded-lg p-3 shadow-sm border border-gray-100'>
             <div className='flex items-center gap-2 mb-1'>
               <Tag className='w-5 h-5 text-gray-600' />
               <span className='text-xs text-gray-600 font-medium'>
@@ -308,7 +308,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           </div>
 
           {/* Brand */}
-          <div className='bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-100'>
+          <div className='bg-gray-200 rounded-lg p-3 shadow-sm border border-gray-100'>
             <div className='flex items-center gap-2 mb-1'>
               <Image
                 src='/logo.png'
@@ -325,7 +325,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
       </div>
 
       {/* Laptop Specifications */}
-      <ul className='grid grid-cols-1 xl:grid-cols-2 gap-2 xl:gap-3 text-sm text-gray-700 bg-gray-50 border border-gray-100 rounded-lg xl:p-4 p-2'>
+      <ul className='grid grid-cols-1 xl:grid-cols-2 gap-2 xl:gap-3 text-sm text-gray-700 bg-gray-200 border border-gray-100 rounded-lg xl:p-4 p-2'>
         <li className='flex items-center gap-2'>
           <Cpu className='w-4 h-4' />
           <span className='font-medium'>Intel Core i5 (12th Gen)</span>
@@ -362,7 +362,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
         {/* Icon Info Boxes */}
         <div className='grid grid-cols-2 flex-1 gap-3 pt-0'>
           {/* Product Code */}
-          <div className='bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-100'>
+          <div className='bg-gray-200 rounded-lg p-3 shadow-sm border border-gray-100'>
             <div className='flex items-center gap-2 mb-1'>
               <ScanBarcode className='w-5 h-5 text-gray-600' />
               <span className='text-xs text-gray-600 font-medium'>
@@ -373,7 +373,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           </div>
 
           {/* Brand */}
-          <div className='bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-100'>
+          <div className='bg-gray-200 rounded-lg p-3 shadow-sm border border-gray-100'>
             <div className='flex items-center gap-2 mb-1'>
               <Tags className='w-5 h-5 text-gray-600' />
               <span className='text-xs text-gray-600 font-medium'>Brand</span>
@@ -389,7 +389,7 @@ export default function ProductInfo({ product }: ProductInfoProps) {
           typeof window !== "undefined" ? window.location.href : ""
         )}&title=${encodeURIComponent(product.name)}`}
       >
-        <button className='w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg'>
+        <button className='w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition-all duration-200 shadow-md '>
           Order Now
         </button>
       </a>

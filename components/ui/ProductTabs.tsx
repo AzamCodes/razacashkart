@@ -85,7 +85,7 @@ export default function ProductTabs({ product }: ProductTabsProps) {
                       ([key, value], idx) => (
                         <tr
                           key={key}
-                          className={idx % 2 === 0 ? "bg-gray-50" : ""}
+                          className={idx % 2 === 0 ? "bg-gray-200" : ""}
                         >
                           <td className='py-3 px-0 whitespace-nowrap xl:px-4 font-semibold text-gray-700 w-1/3'>
                             {key}

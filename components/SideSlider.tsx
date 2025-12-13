@@ -113,8 +113,6 @@
 
 // export default SideSlider;
 
-
-
 // "use client";
 // import React, { useRef } from "react";
 // import { Swiper, SwiperSlide } from "swiper/react";
@@ -212,8 +210,6 @@
 
 // export default SideSlider;
 
-
-
 // "use client";
 // import { useRef } from "react";
 // import { Swiper, SwiperSlide } from "swiper/react";
@@ -236,10 +232,10 @@
 //   return (
 //     <div
 //       className="
-//         relative w-full 
-//         group 
-//         lg:w-80 
-//         lg:h-[520px] 
+//         relative w-full
+//         group
+//         lg:w-80
+//         lg:h-[520px]
 //         h-[200px]
 //       "
 //     >
@@ -319,9 +315,9 @@
 //           hidden lg:flex
 //           opacity-0 group-hover:opacity-100
 //           transition
-//           absolute left-1/2 -translate-x-1/2 
+//           absolute left-1/2 -translate-x-1/2
 //           top-0
-//           bg-black/60 hover:bg-black/80 
+//           bg-black/60 hover:bg-black/80
 //           text-white p-2 rounded-full z-20
 //         "
 //       >
@@ -334,9 +330,9 @@
 //           hidden lg:flex
 //           opacity-0 group-hover:opacity-100
 //           transition
-//           absolute left-1/2 -translate-x-1/2 
+//           absolute left-1/2 -translate-x-1/2
 //           bottom-2
-//           bg-black/60 hover:bg-black/80 
+//           bg-black/60 hover:bg-black/80
 //           text-white p-2 rounded-full z-20
 //         "
 //       >
@@ -365,7 +361,6 @@
 
 // export default SideSlider;
 
-
 "use client";
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -388,15 +383,7 @@ const SideSlider = ({ slides }: { slides: Slide[] }) => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
-    <div
-      className="
-        relative w-full 
-        group 
-        lg:w-80 
-        lg:h-[520px] 
-        h-[200px]
-      "
-    >
+    <div className='relative w-full group lg:w-80 lg:h-[520px] min-h-full'>
       <Swiper
         // MOBILE = horizontal
         // DESKTOP = vertical
@@ -414,18 +401,18 @@ const SideSlider = ({ slides }: { slides: Slide[] }) => {
           },
         }}
         loop
-        autoplay={{ delay: 2500 }}
+        autoplay={{ delay: 2500000 }}
         speed={700}
         modules={[Autoplay]}
         onSwiper={(sw) => (swiperRef.current = sw)} // Properly set the swiperRef
-        className="h-full"
+        className='h-full'
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="relative rounded-lg overflow-hidden cursor-pointer">
-              <div className="relative min-h-[170px] bg-amber-400 lg:min-h-[250px]">
+            <div className='relative min-h-full! flex rounded-lg overflow-hidden cursor-pointer'>
+              <div className='relative min-h-full! w-full grow bg-amber-400'>
                 <div
-                  className="absolute inset-0"
+                  className='absolute inset-0'
                   style={{
                     backgroundImage: `url(${slide.image})`,
                     backgroundSize: "cover",
@@ -433,30 +420,30 @@ const SideSlider = ({ slides }: { slides: Slide[] }) => {
                   }}
                 />
 
-                <div className="absolute inset-0 bg-black/50" />
+                <div className='absolute inset-0 bg-black/50' />
 
-                <div className="relative h-full flex flex-col justify-between p-6 text-white">
+                <div className='relative h-full min-h-[155px] flex flex-col justify-between p-6 text-white'>
                   <div>
-                    <p className="text-xs font-bold">{slide.brand}</p>
+                    {/* <p className='text-xs font-bold'>{slide.brand}</p> */}
 
-                    <h3 className="text-sm lg:text-xl font-bold leading-tight">
+                    <h3 className='text-sm line-clamp-2! lg:text-xl font-bold leading-tight'>
                       {slide.title}
                     </h3>
 
                     {slide.subtitle && (
-                      <p className="text-[10px] whitespace-nowrap lg:text-sm opacity-90">
+                      <p className='text-[10px] whitespace-nowrap lg:text-sm opacity-90'>
                         {slide.subtitle}
                       </p>
                     )}
 
                     {slide.badge && (
-                      <span className="inline-block mt-1.5 lg:mt-3 bg-gray-100 text-black text-[8px] lg:text-xs lg:px-3 px-2 py-0.5 lg:py-1.5 rounded-full font-bold">
+                      <span className='inline-block mt-1.5 lg:mt-3 bg-gray-100 text-black text-[8px] lg:text-xs lg:px-3 px-2 py-0.5 lg:py-1.5 rounded-full font-bold'>
                         {slide.badge}
                       </span>
                     )}
                   </div>
 
-                  <button className="bg-blue-600 cursor-pointer w-fit hover:bg-blue-700 text-white px-1.5 py-1 lg:px-6 mt-2.5 lg:mt-12 lg:py-3 text-[10px] lg:text-sm xl:text-lg font-bold rounded-sm tracking-wider lg:rounded-md shadow-2xl">
+                  <button className='bg-blue-600 cursor-pointer w-fit hover:bg-blue-700 text-white px-1.5 py-1 lg:px-6 mt-2.5 lg:mt-12 lg:py-3 text-[10px] lg:text-sm xl:text-lg font-bold rounded-sm tracking-wider lg:rounded-md shadow-2xl'>
                     SHOP NOW
                   </button>
                 </div>
@@ -469,7 +456,7 @@ const SideSlider = ({ slides }: { slides: Slide[] }) => {
       {/* DESKTOP → show on hover */}
       <button
         onClick={() => swiperRef.current?.slidePrev()}
-        className="
+        className='
           hidden lg:flex
           opacity-0 group-hover:opacity-100
           transition
@@ -477,14 +464,14 @@ const SideSlider = ({ slides }: { slides: Slide[] }) => {
           top-0
           bg-black/60 hover:bg-black/80 
           text-white p-2 rounded-full z-20
-        "
+        '
       >
-        <ChevronLeft className="w-5 h-5 rotate-90" />
+        <ChevronLeft className='w-5 h-5 rotate-90' />
       </button>
 
       <button
         onClick={() => swiperRef.current?.slideNext()}
-        className="
+        className='
           hidden lg:flex
           opacity-0 group-hover:opacity-100
           transition
@@ -492,9 +479,9 @@ const SideSlider = ({ slides }: { slides: Slide[] }) => {
           bottom-2
           bg-black/60 hover:bg-black/80 
           text-white p-2 rounded-full z-20
-        "
+        '
       >
-        <ChevronRight className="w-5 h-5 rotate-90" />
+        <ChevronRight className='w-5 h-5 rotate-90' />
       </button>
 
       {/* MOBILE → always visible nav */}

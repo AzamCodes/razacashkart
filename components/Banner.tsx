@@ -88,7 +88,7 @@
 //         <div className="flex-1 relative rounded-lg overflow-hidden">
 //             <div className={`relative h-[200px] lg:h-[245px] bg-gradient-to-br `}>
 //                 {/* Background Image */}
-//                 <div 
+//                 <div
 //                   className="absolute inset-0 opacity-80"
 //                   style={{
 //                     backgroundImage: `url(${slide.image})`,
@@ -96,7 +96,7 @@
 //                     backgroundPosition: 'center'
 //                   }}
 //                 />
-                
+
 //                 {/* Content */}
 //                 <div className="relative h-full flex flex-col justify-between p-6 text-white">
 //                   <div>
@@ -170,17 +170,16 @@
 //     visible: { opacity: 1, scale: 1 }
 //   };
 
-
 //   return (
 //     <div className="w-full bg-gray-100 py-4 px-4">
-//       <div className="max-w-7xl mx-auto">
+//       <div className="xl:max-w-7xl max-w-[90vw] mx-auto">
 //         <div className="flex flex-col lg:flex-row gap-4">
 
 //           {/* 1. Main Slider */}
 //           <div className="flex-1 relative group">
 //             <div className={`relative h-[400px] lg:h-[500px] rounded-lg overflow-hidden `}>
 //               {/* Background Image */}
-//               <div 
+//               <div
 //                 className="absolute inset-0 opacity-70"
 //                 style={{
 //                   backgroundImage: `url(${mainSlide.image})`,
@@ -188,7 +187,7 @@
 //                   backgroundPosition: 'center'
 //                 }}
 //               />
-              
+
 //               {/* Content */}
 //               <div className="relative h-full flex items-center px-8 lg:px-16">
 //                 <div className="text-white max-w-xl">
@@ -281,7 +280,7 @@
 //           </div>
 
 //           {/* 2. Side Vertical Slider */}
-//           <motion.div 
+//           <motion.div
 //             className="w-full lg:w-80 flex flex-row lg:flex-col gap-4 relative group"
 //             initial="hidden"
 //             whileHover="visible"
@@ -310,7 +309,7 @@
 //             >
 //               <ChevronRight className="w-5 h-5 lg:w-4 lg:h-4 rotate-90" />
 //             </motion.button>
-            
+
 //             {/* Dots/Indicator for Side Slider - Optional, simplified for two visible slides */}
 //             {/* <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex lg:flex-col gap-2 p-4 z-10">
 //                 {sideSlides.map((_, index) => (
@@ -517,7 +516,7 @@
 
 //   return (
 //     <div className="w-full bg-gray-100 py-6 px-4">
-//       <div className="max-w-7xl mx-auto">
+//       <div className="xl:max-w-7xl max-w-[90vw] mx-auto">
 //         <div className="flex flex-col lg:flex-row gap-6">
 
 //           {/* === MAIN SLIDER === */}
@@ -548,7 +547,7 @@
 //                         {mainSlide.badge}
 //                       </span>
 //                       </div>
-                        
+
 //                     )}
 //                   </h2>
 //                   {mainSlide.subtitle && (
@@ -625,8 +624,6 @@
 //     </div>
 //   );
 // }
-
-
 
 // "use client";
 
@@ -805,7 +802,7 @@
 
 //   return (
 //     <div className="w-full bg-gray-100 py-6 px-4">
-//       <div className="max-w-7xl mx-auto">
+//       <div className="xl:max-w-7xl max-w-[90vw] mx-auto">
 //         <div className="flex flex-col lg:flex-row gap-6">
 
 //           {/* === MAIN SLIDER === */}
@@ -913,7 +910,6 @@
 //     </div>
 //   );
 // }
-
 
 // "use client";
 
@@ -1107,7 +1103,7 @@
 
 //   return (
 //     <div className="w-full bg-gray-100 py-6 px-4">
-//       <div className="max-w-7xl mx-auto">
+//       <div className="xl:max-w-7xl max-w-[90vw] mx-auto">
 //         <div className="flex flex-col lg:flex-row gap-6">
 //           {/* === MAIN SLIDER (SWIPER with fade effect) === */}
 //           <div className="flex-1 relative group rounded-2xl overflow-hidden shadow-2xl">
@@ -1121,7 +1117,7 @@
 //   autoplay={{ delay: 3000 }}
 //   effect="fade"
 //   fadeEffect={{ crossFade: true }}
-                
+
 //                 loop={true}
 //                 speed={700}
 //                 slidesPerView={1}
@@ -1143,7 +1139,7 @@
 //                     />
 
 //                     {/* BLACK OVERLAY */}
-                    // <div className="absolute inset-0 bg-black/60" />
+// <div className="absolute inset-0 bg-black/60" />
 
 //                     {/* Content (kept exactly as before) */}
 //                     <div className="relative h-full flex items-center px-8 lg:px-16 text-white">
@@ -1238,7 +1234,7 @@
 //   );
 // }
 
-'use client'
+"use client";
 import React, { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -1307,7 +1303,8 @@ const sideSlides: Slide[] = [
     title: "LIGHT-UP DEALS",
     subtitle: "GET INSTANT DISCOUNT !",
     badge: "Limited Time",
-    image: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&q=80",
   },
   {
     id: 2,
@@ -1315,7 +1312,8 @@ const sideSlides: Slide[] = [
     title: "Minecube 360 Ultra ARGB",
     subtitle: "Sync CPU Liquid Cooler",
     badge: "NEW ARRIVAL",
-    image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=400&q=80",
   },
   {
     id: 3,
@@ -1323,7 +1321,8 @@ const sideSlides: Slide[] = [
     title: "ROG STRIX",
     subtitle: "Gaming Motherboards",
     badge: "BEST SELLER",
-    image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&q=80",
   },
   {
     id: 4,
@@ -1331,13 +1330,14 @@ const sideSlides: Slide[] = [
     title: "Vengeance RGB",
     subtitle: "DDR5 Memory",
     badge: "FLASH SALE",
-    image: "https://images.unsplash.com/photo-1541029071515-84cc54f84dc5?w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1541029071515-84cc54f84dc5?w=400&q=80",
   },
 ];
 
 // === Main HeroSlider Component ===
 export default function HeroSlider() {
-const swiperRef = useRef<SwiperType | null>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
   // const [currentMainSlide, setCurrentMainSlide] = useState(0);
 
   const nextMainSlide = () => {
@@ -1355,19 +1355,19 @@ const swiperRef = useRef<SwiperType | null>(null);
   // const mainSlide = mainSlides[currentMainSlide];
 
   return (
-    <div className="w-full bg-gray-100 py-6 px-4">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-6">
+    <div className='w-full bg-gray-200 py-12 px-0'>
+      <div className='xl:max-w-7xl max-w-[90vw] mx-auto'>
+        <div className='flex flex-col lg:flex-row gap-6'>
           {/* === MAIN SLIDER (SWIPER with fade effect) === */}
-          <div className="flex-1 relative group rounded-2xl overflow-hidden shadow-2xl">
-            <div className="relative h-[250px] lg:h-[520px]">
+          <div className='flex-1 relative group rounded-2xl overflow-hidden shadow-2xl'>
+            <div className='relative h-[250px] lg:h-[520px]'>
               <Swiper
                 onSwiper={(sw) => {
                   swiperRef.current = sw;
                 }}
                 modules={[Autoplay, EffectFade]}
                 autoplay={{ delay: 3000 }}
-                effect="fade"
+                effect='fade'
                 fadeEffect={{ crossFade: true }}
                 loop={true}
                 speed={700}
@@ -1375,52 +1375,52 @@ const swiperRef = useRef<SwiperType | null>(null);
                 // onSlideChange={(sw) => {
                 //   setCurrentMainSlide(sw.realIndex ?? sw.activeIndex ?? 0);
                 // }}
-                className="h-full"
+                className='h-full'
               >
                 {mainSlides.map((slide) => (
                   <SwiperSlide key={slide.id}>
                     {/* Background Image layer */}
                     <div
-                      className="absolute inset-0"
+                      className='absolute inset-0'
                       style={{
                         backgroundImage: `url(${slide.image})`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                       }}
                     />
-                                        <div className="absolute inset-0 bg-black/60" />
+                    <div className='absolute inset-0 bg-black/60' />
 
                     {/* Content */}
-                    <div className="relative h-full flex items-center px-8 lg:px-16 text-white">
-                      <div className="max-w-2xl">
-                        <p className="text-xl lg:text-2xl font-bold xl:tracking-wider mb-1 sm:mb-3">
+                    <div className='relative h-full flex items-center px-8 lg:px-16 text-white'>
+                      <div className='max-w-2xl'>
+                        <p className='text-xl lg:text-2xl font-bold xl:tracking-wider mb-1 sm:mb-3'>
                           {slide.brand}
                         </p>
-                       <h2 className="text-xl sm:text-5xl lg:text-5xl font-extrabold mb-0 sm:mb-3 lg:mb-4 lg:leading-tight flex items-center gap-4">
-  {slide.title}
+                        <h2 className='text-xl sm:text-5xl lg:text-5xl font-extrabold mb-0 sm:mb-3 lg:mb-4 lg:leading-tight flex items-center gap-4'>
+                          {slide.title}
 
-  {slide.badge && (
-    <span className="bg-white text-black text-xs px-3 py-0.5 lg:text-lg lg:px-5 lg:py-2 rounded-full font-bold">
-      {slide.badge}
-    </span>
-  )}
-</h2>
+                          {slide.badge && (
+                            <span className='bg-white text-black text-xs px-3 py-0.5 lg:text-lg lg:px-5 lg:py-2 rounded-full font-bold'>
+                              {slide.badge}
+                            </span>
+                          )}
+                        </h2>
 
                         {slide.subtitle && (
-                          <p className="text-xs lg:text-2xl mb-4 lg:mb-6 opacity-90">
+                          <p className='text-xs lg:text-2xl mb-4 lg:mb-6 opacity-90'>
                             {slide.subtitle}
                           </p>
                         )}
 
-                        <div className="flex flex-col">
+                        <div className='flex flex-col'>
                           {slide.price && (
-                            <div className="inline-block w-fit mb-3 lg:mb-6">
-                              <div className="bg-blue-600 text-white sm:px-10 px-4 py-2 sm:py-7 rounded-2xl transform -skew-x-12 shadow-2xl">
-                                <div className="transform skew-x-12 lg:skew-x-12 text-center">
-                                  <p className="text-xs lg:text-sm font-medium">
+                            <div className='inline-block w-fit mb-3 lg:mb-6'>
+                              <div className='bg-blue-600 text-white sm:px-10 px-4 py-2 sm:py-7 rounded-2xl transform -skew-x-12 shadow-2xl'>
+                                <div className='transform skew-x-12 lg:skew-x-12 text-center'>
+                                  <p className='text-xs lg:text-sm font-medium'>
                                     {slide.priceLabel}
                                   </p>
-                                  <p className="text-sm lg:text-4xl xl:text-5xl font-bold">
+                                  <p className='text-sm lg:text-4xl xl:text-5xl font-bold'>
                                     {slide.price}
                                   </p>
                                 </div>
@@ -1428,7 +1428,7 @@ const swiperRef = useRef<SwiperType | null>(null);
                             </div>
                           )}
 
-                          <Button className="bg-blue-600 cursor-pointer w-fit hover:bg-blue-700 text-white px-3 py-2 lg:px-10 lg:py-7 text-xs lg:text-xl font-bold rounded-sm tracking-wider lg:rounded-xl shadow-2xl">
+                          <Button className='bg-blue-600 cursor-pointer w-fit hover:bg-blue-700 text-white px-3 py-2 lg:px-10 lg:py-7 text-xs lg:text-xl font-bold rounded-sm tracking-wider lg:rounded-xl shadow-2xl'>
                             SHOP NOW
                           </Button>
                         </div>
@@ -1440,15 +1440,15 @@ const swiperRef = useRef<SwiperType | null>(null);
               {/* Navigation */}
               <button
                 onClick={prevMainSlide}
-                className="absolute left-0.5 lg:left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-2 lg:p-4 rounded-full z-10 transition-all md:opacity-0 md:group-hover:opacity-100 shadow-xl"
+                className='absolute left-0.5 lg:left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-2 lg:p-4 rounded-full z-10 transition-all md:opacity-0 md:group-hover:opacity-100 shadow-xl'
               >
-                <ChevronLeft className="w-4 h-4 lg:w-8 lg:h-8" />
+                <ChevronLeft className='w-4 h-4 lg:w-8 lg:h-8' />
               </button>
               <button
                 onClick={nextMainSlide}
-                className="absolute right-0.5 lg:right-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-2 lg:p-4 rounded-full z-10 transition-all md:opacity-0 md:group-hover:opacity-100 shadow-xl"
+                className='absolute right-0.5 lg:right-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white p-2 lg:p-4 rounded-full z-10 transition-all md:opacity-0 md:group-hover:opacity-100 shadow-xl'
               >
-                <ChevronRight className="w-4 h-4 lg:w-8 lg:h-8" />
+                <ChevronRight className='w-4 h-4 lg:w-8 lg:h-8' />
               </button>
             </div>
           </div>

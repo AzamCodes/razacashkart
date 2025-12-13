@@ -447,9 +447,9 @@ export default function ProductCard({
               </div>
             </div>
 
-            <button className='w-full bg-blue-600 hover:bg-blue-700 rounded-sm text-white font-semibold py-2.5 text-xs sm:text-sm lg:rounded-lg flex items-center justify-center gap-2 transition-colors cursor-pointer'>
+            <button className='w-full bg-blue-600 hover:bg-blue-700 rounded-sm text-white font-semibold py-1 xl:py-2.5 text-xs sm:text-sm lg:rounded-lg flex items-center justify-center gap-2 transition-colors cursor-pointer'>
               Order Now
-              <ArrowUpRight className='' size={32} />
+              <ArrowUpRight className='xl:w-8' />
             </button>
           </div>
         </div>

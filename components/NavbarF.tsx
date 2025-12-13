@@ -67,7 +67,7 @@ export default function NavbarF() {
           </div>
 
           {/* Desktop Search Bar - Centered and Expanded */}
-          <div className='hidden md:flex flex-1 justify-center px-8'>
+          <div className='hidden md:flex flex-1 justify-center px-2 xl:px-8'>
             <div className='relative w-full max-w-full'>
               <input
                 type='text'
@@ -86,10 +86,10 @@ export default function NavbarF() {
           </div>
 
           {/* Desktop Category Dropdown */}
-          <div className='hidden md:flex items-center gap-10'>
-            <div className='hidden md:flex items-center cursor-pointer hover:text-blue-600 gap-2'>
-              <Phone className='h-5 w-5' />
-              (+91) 9321888689
+          <div className='hidden md:flex items-center gap-5 xl:gap-10'>
+            <div className='hidden md:flex items-center cursor-pointer hover:text-blue-600 gap-1 xl:gap-2'>
+              <Phone className='h-5 w-5 mt-1' />
+              +91 9321888689
             </div>
             <CategoryMenuF />
           </div>
