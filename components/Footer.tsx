@@ -224,6 +224,7 @@
 import React from "react";
 import { ShoppingCart, Mail, Phone, MapPin, Facebook, Instagram } from "lucide-react";
 import Link from "next/link";
+import { brandLinks, policyLinks, priceLinks } from "@/config/footerLinks";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -231,8 +232,8 @@ export default function Footer() {
     return (
         <footer className="bg-gray-900 text-gray-300">
             {/* Main Footer Content */}
-            <div className="xl:max-w-7xl max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            <div className="xl:max-w-7xl max-w-[90vw] mx-auto px-2 sm:px-6 lg:px-8 py-12">
+                <div className="grid grid-cols-1 place-content-between sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 
                     {/* Company Info */}
                     <div className="space-y-4">
@@ -270,78 +271,83 @@ export default function Footer() {
                     </div>
 
                     {/* Shop Links */}
-                    <div>
-                        <h3 className="text-white font-semibold text-lg mb-4">Shop by Brand</h3>
+                    <div className="flex justify-start lg:justify-around gap-6  lg:gap-0">
+
+                        <ul className="space-y-2.5">
+                            <h3 className="text-white font-semibold text-lg mb-4">Shop by Price</h3>
+                            {priceLinks.length > 0 ? (
+                                priceLinks.map((item) => (
+                                    <li key={item.slug}>
+                                        <Link
+                                            href={`/category/price/${item.slug}`}
+                                            className="hover:text-blue-400 transition-colors text-sm"
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                ))
+                            ) : (
+                                <li className="text-xs text-gray-500">
+                                    Prices unavailable
+                                </li>
+                            )}
+                        </ul>
+
+                        <ul className="space-y-2.5">
+                            <h3 className="text-white font-semibold text-lg mb-4">Shop by Brand</h3>
+                            {brandLinks.length > 0 ? (
+                                brandLinks.map((item) => (
+                                    <li key={item.slug}>
+                                        <Link
+                                            href={`/category/brand/${item.slug}`}
+                                            className="hover:text-blue-400 transition-colors text-sm"
+                                        >
+                                            {item.label} Laptops
+                                        </Link>
+                                    </li>
+                                ))
+                            ) : (
+                                <li className="text-xs text-gray-500">
+                                    Brands loading…
+                                </li>
+                            )}
+                        </ul>
+
+                    </div>
+                    {/* <div>
+                        <h3 className="text-white font-semibold text-lg mb-4">Shop by Processor</h3>
                         <ul className="space-y-2.5">
                             <li>
                                 <Link href="/category/brand/hp" className="hover:text-blue-400 transition-colors text-sm">
-                                    HP Laptops
+                                    Intel i3 gen
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/category/brand/dell" className="hover:text-blue-400 transition-colors text-sm">
-                                    Dell Laptops
+                                    Intel i5 gen
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/category/brand/lenovo" className="hover:text-blue-400 transition-colors text-sm">
-                                    Lenovo Laptops
+                                    Intel i7 gen
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/category/brand/asus" className="hover:text-blue-400 transition-colors text-sm">
-                                    Asus Laptops
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/category/brand/acer" className="hover:text-blue-400 transition-colors text-sm">
-                                    Acer Laptops
+                                    Intel i9 gen
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/category/price/under-15000" className="hover:text-blue-400 transition-colors text-sm">
-                                    Budget Laptops
-                                </Link>
+                                    AMD Ryzen 3 gen                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/category/price/under-15000" className="hover:text-blue-400 transition-colors text-sm">
+                                    AMD Ryzen 5 gen                                </Link>
                             </li>
                         </ul>
-                    </div>
+                    </div> */}
 
-                    {/* Quick Links */}
-                    <div>
-                        <h3 className="text-white font-semibold text-lg mb-4">Quick Links</h3>
-                        <ul className="space-y-2.5">
-                            <li>
-                                <Link href="/about" className="hover:text-blue-400 transition-colors text-sm">
-                                    About Us
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/contact" className="hover:text-blue-400 transition-colors text-sm">
-                                    Contact Us
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/warranty" className="hover:text-blue-400 transition-colors text-sm">
-                                    Warranty Policy
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/shipping" className="hover:text-blue-400 transition-colors text-sm">
-                                    Shipping & Delivery
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/returns" className="hover:text-blue-400 transition-colors text-sm">
-                                    Return Policy
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/faq" className="hover:text-blue-400 transition-colors text-sm">
-                                    FAQs
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
 
                     {/* Contact Info */}
                     {/* <div>
@@ -412,42 +418,47 @@ export default function Footer() {
                             </li>
                         </ul>
                     </div>
+
                 </div>
             </div>
 
             {/* Bottom Bar */}
             <div className="border-t border-gray-800 bg-gray-950">
-                <div className="xl:max-w-7xl max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div className="xl:max-w-7xl max-w-[90vw] mx-auto px-3 sm:px-6 lg:px-8 py-6">
+
+                    {/* Disclaimer */}
                     <div className="mb-4 pb-4 border-b border-gray-800">
                         <p className="text-gray-400 text-xs sm:text-sm leading-relaxed text-center sm:text-left max-w-6xl">
-                            All product names, logos, and brands are the property of their respective owners. All company, product, and service names used in this website are for identification purposes only. Use of these names, logos, and brands does not imply endorsement.
+                            All product names, logos, and brands are the property of their respective owners.
+                            All company, product, and service names used in this website are for identification purposes only.
+                            Use of these names, logos, and brands does not imply endorsement.
                         </p>
                     </div>
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-                        <p className="text-gray-400 text-center sm:text-left">
+
+                    {/* Bottom Row */}
+                    <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-4">
+                        <p className="text-gray-400 text-xs sm:text-sm text-center sm:text-left leading-relaxed">
                             © {currentYear} Raza Cash Kart. All rights reserved.
                         </p>
-                        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-                            <Link href="/privacy" className="text-gray-400 hover:text-blue-400 transition-colors">
-                                Privacy Policy
-                            </Link>
-                            <Link href="/terms" className="text-gray-400 hover:text-blue-400 transition-colors">
-                                Shipping Policy
-                            </Link>
-                            <Link href="/sitemap" className="text-gray-400 hover:text-blue-400 transition-colors">
-                                Return Policy
-                            </Link>
+
+                        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 gap-3 lg:gap-6 text-xs sm:text-sm">
+                            {policyLinks.length > 0 &&
+                                policyLinks.map((item) => (
+                                    <Link
+                                        key={item.href}
+                                        href={item.href}
+                                        className="text-gray-400 hover:text-blue-400 transition-colors"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                ))}
                         </div>
                     </div>
 
-                    {/* Disclaimer */}
-                    {/* <div className="mt-4 pt-4 border-t border-gray-800">
-                        <p className="text-gray-500 text-xs leading-relaxed text-center sm:text-left max-w-5xl">
-                            All product names, logos, and brands are the property of their respective owners. All company, product, and service names used in this website are for identification purposes only. Use of these names, logos, and brands does not imply endorsement.
-                        </p>
-                    </div> */}
                 </div>
             </div>
+
+
         </footer>
     );
 }
