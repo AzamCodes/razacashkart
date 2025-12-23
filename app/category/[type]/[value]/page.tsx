@@ -153,11 +153,19 @@
 // app/category/[type]/[value]/page.tsx
 "use client";
 
-import { use, useState, useEffect } from "react";
+import { use, useState, useEffect, useMemo } from "react";
 import ProductCard from "@/components/ui/ProductCard";
+import CategoryFilter, { FilterState } from "@/components/CategoryFilter";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Filter, ArrowUpDown, ShoppingCart, ChevronUp, ChevronDown } from "lucide-react";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import ProductsData from '@/data/products.json';
-import { ChevronRight } from "lucide-react";
-import Link from "next/link";
 
 const categoryTitles: Record<string, Record<string, string>> = {
   price: {
@@ -213,23 +221,139 @@ export default function CategoryPage({
   const resolvedParams = use(params);
 
   const [products, setProducts] = useState<Product[]>([]);
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [filters, setFilters] = useState<FilterState>({
+    minPrice: 0,
+    maxPrice: 100000,
+    brands: [],
+    processors: [],
+    ram: [],
+    storage: [],
+    screenSize: [],
+    inStock: false,
+  });
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [sortBy, setSortBy] = useState<"featured" | "price-asc" | "price-desc" | "newest">("featured");
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showMobileFilters, setShowMobileFilters] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Scroll behavior
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setShowScrollTop(currentScrollY > 200);
+      
+      // Hide/show mobile filters based on scroll direction
+      if (currentScrollY > 100) {
+        if (currentScrollY > lastScrollY) {
+          setShowMobileFilters(false); // Hide on scroll down
+        } else {
+          setShowMobileFilters(true); // Show on scroll up
+        }
+      } else {
+        setShowMobileFilters(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const categoryTitle = categoryTitles[resolvedParams.type]?.[resolvedParams.value] || "Products";
-  const categoryType = resolvedParams.type === "price" ? "Shop By Price" :
-    resolvedParams.type === "brand" ? "Shop By Brands" :
-      "Shop By Processor";
+
+  // Filter and sort products
+  const filteredProducts = useMemo(() => {
+    // Start with all products if brand filter is applied and we're on a brand category page
+    let baseProducts = products;
+    if (resolvedParams.type === 'brand' && filters.brands.length > 0) {
+      baseProducts = allProducts;
+    }
+    
+    const filtered = baseProducts.filter((product) => {
+      // Price Check
+      if (product.price < filters.minPrice || product.price > filters.maxPrice) return false;
+
+      // Brand Check
+      if (filters.brands.length > 0 && !filters.brands.includes(product.brand)) return false;
+
+      // In Stock Check
+      if (filters.inStock && !product.inStock) return false;
+
+      // Processor filter
+      if (
+        filters.processors.length > 0 &&
+        (!product.specifications?.Processor || !filters.processors.includes(product.specifications.Processor))
+      )
+        return false;
+
+      if (
+        filters.ram.length > 0 &&
+        (!product.specifications?.RAM || !filters.ram.includes(product.specifications.RAM))
+      )
+        return false;
+
+      if (
+        filters.storage.length > 0 &&
+        (!product.specifications?.Storage || !filters.storage.includes(product.specifications.Storage))
+      )
+        return false;
+
+      if (
+        filters.screenSize.length > 0 &&
+        (!product.specifications?.Display || !filters.screenSize.includes(product.specifications.Display))
+      )
+        return false;
+
+      return true;
+    });
+
+    // Apply sorting
+    if (sortBy === "price-asc") {
+      filtered.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "price-desc") {
+      filtered.sort((a, b) => b.price - a.price);
+    } else if (sortBy === "newest") {
+      filtered.sort((a, b) => b.id - a.id);
+    }
+
+    return filtered;
+  }, [products, allProducts, filters, sortBy, resolvedParams.type]);
+
+  // Calculate price limits dynamically from all products
+  const allPrices = allProducts.map((p) => p.price);
+  const minPriceLimit = allPrices.length > 0 ? Math.min(...allPrices) : 0;
+  const maxPriceLimit = allPrices.length > 0 ? Math.max(...allPrices) : 100000;
+
+  // Update filter limits when all products change
+  useEffect(() => {
+    if (allProducts.length > 0) {
+      setFilters(prev => ({
+        ...prev,
+        minPrice: minPriceLimit,
+        maxPrice: maxPriceLimit
+      }));
+    }
+  }, [allProducts, minPriceLimit, maxPriceLimit]);
 
   useEffect(() => {
     const filterProducts = () => {
       setLoading(true);
 
       try {
-        const allProducts = ProductsData as Product[];
+        const allProductsData = ProductsData as Product[];
+        setAllProducts(allProductsData);
         let filtered: Product[] = [];
 
         if (resolvedParams.type === 'price') {
-          filtered = allProducts.filter(product => {
+          filtered = allProductsData.filter(product => {
             switch (resolvedParams.value) {
               case 'under-10000': return product.price < 10000;
               case 'under-15000': return product.price < 15000;
@@ -243,11 +367,11 @@ export default function CategoryPage({
             }
           });
         } else if (resolvedParams.type === 'brand') {
-          filtered = allProducts.filter(product =>
+          filtered = allProductsData.filter(product =>
             product.brand.toLowerCase() === resolvedParams.value.toLowerCase()
           );
         } else if (resolvedParams.type === 'processor') {
-          filtered = allProducts.filter(product => {
+          filtered = allProductsData.filter(product => {
             const processor = product.specifications?.Processor?.toLowerCase() || '';
             switch (resolvedParams.value) {
               case 'intel-i3': return processor.includes('i3');
@@ -281,58 +405,102 @@ export default function CategoryPage({
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Breadcrumb */}
-      <div className="border-b border-gray-200 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
-            <Link href="/" className="hover:text-blue-600 transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="h-4 w-4" />
-            <span className="text-gray-400">{categoryType}</span>
-            <ChevronRight className="h-4 w-4" />
-            <span className="text-blue-600 font-medium">{categoryTitle}</span>
-          </div>
+    <div className="bg-gray-50 min-h-screen pb-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-6">
+        {/* Category Header */}
+        <div className="mb-0 sm:mb-6">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {categoryTitle}
+          </h1>
+          <p className="text-gray-500 mt-1">
+            {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'} available
+          </p>
         </div>
-      </div>
 
-      {/* Header Section */}
-      <div className="bg-[#F9FAFB] text-blue-600">
-        <div className="xl:max-w-7xl max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <div className="">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2">
-              {categoryTitle}
-            </h1>
-            {/* <div className='h-1 bg-white/30 rounded-full mt-3 w-32 '></div> */}
-            <p className="text-gray-600 text-base sm:text-lg mt-4">
-              {products.length} {products.length === 1 ? 'product' : 'products'} available
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Products Flexbox Grid */}
-      <div className="w-full bg-white pt-6 pb-12">
-        <div className="xl:max-w-7xl max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8">
-          {products.length === 0 ? (
-            <div className="text-center py-16">
-              {/* <div className="text-6xl mb-4">😔</div> */}
-              <p className="text-gray-600 text-xl font-medium mb-2">
-                No products found in this category
-              </p>
-              <p className="text-gray-500 text-sm">
-                Try browsing other categories or price ranges
-              </p>
+        <div className="flex flex-col lg:flex-row gap-6">
+          {/* Desktop Sidebar */}
+          <aside className="hidden lg:block w-72 flex-shrink-0">
+            <div className="sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto">
+              <CategoryFilter
+                products={allProducts}
+                filters={filters}
+                setFilters={setFilters}
+                minPriceLimit={minPriceLimit}
+                maxPriceLimit={maxPriceLimit}
+              />
             </div>
-          ) : (
-            <div className="flex justify-start flex-wrap gap-4 md:gap-6">
-              {products.map((product) => (
-                <div
-                  key={product.id}
-                  className="lg:w-[calc(25%-24px)] md:w-[calc(33.333%-20px)] w-[calc(50%-12px)]"
-                >
+          </aside>
+
+          {/* Mobile Filter & Sort Bar */}
+          <div className={`lg:hidden flex gap-2 mb-4 sticky top-[50px] z-30 bg-gray-50/95 backdrop-blur py-2 transition-transform duration-300 ${
+            showMobileFilters ? 'translate-y-[30px]' : '-translate-y-full'
+          }`}>
+            <Sheet open={isMobileFilterOpen} onOpenChange={setIsMobileFilterOpen}>
+              <SheetTrigger asChild>
+                <Button variant="outline" className="flex-1 gap-2 border-gray-300">
+                  <Filter className="w-4 h-4" /> Filters
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px] sm:w-[350px] overflow-y-auto">
+                <SheetHeader>
+                  <SheetTitle><ShoppingCart className='h-8 w-8 text-blue-600' /></SheetTitle>
+                </SheetHeader>
+                <div className="mt-4 pb-10">
+                  <CategoryFilter
+                    products={allProducts}
+                    filters={filters}
+                    setFilters={setFilters}
+                    minPriceLimit={minPriceLimit}
+                    maxPriceLimit={maxPriceLimit}
+                  />
+                </div>
+              </SheetContent>
+            </Sheet>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" className="flex-1 gap-2 border-gray-300">
+                  <ArrowUpDown className="w-4 h-4" /> Sort By
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-[var(--radix-dropdown-menu-trigger-width)]">
+                <DropdownMenuItem onClick={() => setSortBy("featured")}>Featured</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setSortBy("newest")}>Newest First</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setSortBy("price-asc")}>Price: Low to High</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setSortBy("price-desc")}>Price: High to Low</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
+
+          {/* Product Grid */}
+          <div className="flex-1">
+            {/* Desktop Sort Bar */}
+            <div className="hidden lg:flex justify-end mb-4 items-center">
+              <span className="text-sm text-gray-500 mr-2">Sort By:</span>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="font-semibold text-gray-800">
+                    {sortBy === "featured" && "Featured"}
+                    {sortBy === "newest" && "Newest First"}
+                    {sortBy === "price-asc" && "Price: Low to High"}
+                    {sortBy === "price-desc" && "Price: High to Low"}
+                    <ChevronDown className="ml-1 w-4 h-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => setSortBy("featured")}>Featured</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setSortBy("newest")}>Newest First</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setSortBy("price-asc")}>Price: Low to High</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setSortBy("price-desc")}>Price: High to Low</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+
+            {filteredProducts.length > 0 ? (
+              <div className="grid grid-cols-2 relative sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+                {filteredProducts.map((product) => (
                   <ProductCard
+                    key={product.id}
                     id={product.id}
                     name={product.name}
                     slug={product.slug}
@@ -340,17 +508,48 @@ export default function CategoryPage({
                     originalPrice={product.originalPrice}
                     discount={product.discount}
                     images={product.images}
-                    cardHeight="aspect-[3/4]"
+                    className="bg-white hover:shadow-xl transition-shadow duration-300"
                   />
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center py-20 text-center bg-white rounded-lg border border-dashed">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                  <Filter className="w-8 h-8 text-gray-400" />
                 </div>
-              ))}
-            </div>
-          )}
+                <h3 className="text-xl font-semibold text-gray-900">No products found</h3>
+                <p className="text-gray-500 mt-2 max-w-sm">We couldn&apos;t find any products matching your selected filters.</p>
+                <Button
+                  variant="link"
+                  onClick={() => setFilters({
+                    minPrice: minPriceLimit,
+                    maxPrice: maxPriceLimit,
+                    brands: [],
+                    processors: [],
+                    ram: [],
+                    storage: [],
+                    screenSize: [],
+                    inStock: false
+                  })}
+                  className="mt-4 text-blue-600"
+                >
+                  Clear all filters
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* Bottom Spacing */}
-      <div className="h-12" />
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-6 right-6 z-50 p-4 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300"
+        >
+          <ChevronUp className="w-6 h-6" />
+        </button>
+      )}
     </div>
   );
 }

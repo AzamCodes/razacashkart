@@ -47,5 +47,5 @@ export const processorLinks = Array.from(
 export const policyLinks = [
     { label: "Privacy Policy", href: "/privacy-policy" },
     { label: "Shipping Policy", href: "/shipping-policy" },
-    { label: "Return & Refund Policy", href: "/return-policy" },
+    { label: "Return & Refund Policy", href: "/refund-returns-policy" },
 ];

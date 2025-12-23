@@ -150,7 +150,7 @@ function SearchPageContent() {
         <div className="bg-gray-50 min-h-screen pb-10">
             <div className="max-w-7xl mx-auto px-4 md:px-8 py-6">
                 {/* Search Results Header */}
-                <div className="mb-6">
+                <div className="mb-0 sm:mb-6">
                     {searchQuery ? (
                         <>
                             <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
