@@ -44,7 +44,7 @@ const BrandSlider = () => {
     <PSlider
       title='Top Selling Brands'
       spaceBetween={16}
-      containerClassName='w-full xl:max-w-7xl max-w-[90vw] mx-auto px-0 py-8'
+      containerClassName='w-full py-8 sm:py-12'
       breakpoints={{
         640: { slidesPerView: 2 },
         768: { slidesPerView: 3 },

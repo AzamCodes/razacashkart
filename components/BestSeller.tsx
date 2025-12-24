@@ -106,8 +106,8 @@ const BestSellerHeroSection: React.FC = () => {
     activeTab === "bestsellers" ? bestSellers : newArrivals;
 
   return (
-    <div className='w-full bg-black py-16'>
-      <div className='xl:max-w-7xl max-w-[90vw] mx-auto px-0'>
+    <div className='w-full bg-black py-8 sm:py-12'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-10 items-start'>
           <div className='lg:col-span-3 space-y-6'>
             <h2 className='text-4xl font-bold text-white'>

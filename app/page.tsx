@@ -2,26 +2,20 @@ import HeroSlider from "@/components/Banner";
 import BestSeller from "@/components/BestSeller";
 import BrandSlider from "@/components/BrandSlider";
 import SimpleFAQComponent from "@/components/FAQComponent";
-
-
+import AboutSection from "@/components/AboutSection";
 import HappyCustomersGallery from "@/components/HappyCustomerGallery";
-// import Navbar from "@/components/Navbar";
-
 import ProductSwiper from "@/components/ProductSwiper";
 
 export default function Home() {
   return (
-    <div className='flex w-full items-center flex-col justify-center bg-zinc-50 font-sans dark:bg-black'>
-      {/* <Navbar/> */}
+    <div className='w-full bg-zinc-50 font-sans dark:bg-black'>
       <HeroSlider />
       <BestSeller />
       <BrandSlider />
-      {/* <GoogleReviewsSection/> */}
       <ProductSwiper />
       <HappyCustomersGallery />
-      {/* <FAQComponent /> */}
+      <AboutSection />
       <SimpleFAQComponent />
-      {/* <Footer /> */}
     </div>
   );
 }

@@ -147,8 +147,8 @@ function SearchPageContent() {
     }, [filteredProducts, sortBy]);
 
     return (
-        <div className="bg-gray-50 min-h-screen pb-10">
-            <div className="max-w-7xl mx-auto px-4 md:px-8 py-6">
+        <div className="bg-gray-50 min-h-screen py-8 sm:py-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Search Results Header */}
                 <div className="mb-0 sm:mb-6">
                     {searchQuery ? (

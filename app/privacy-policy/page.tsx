@@ -3,10 +3,10 @@ import { ChevronRight } from "lucide-react";
 
 export default function PrivacyPolicyPage() {
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-gray-50">
             {/* Breadcrumb */}
-            <div className="border-b border-gray-200 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div className="border-b border-gray-200 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
                         <Link href="/" className="hover:text-blue-600">Home</Link>
                         <ChevronRight className="h-4 w-4" />
@@ -16,8 +16,9 @@ export default function PrivacyPolicyPage() {
             </div>
 
             {/* SINGLE CONSISTENT CONTENT WRAPPER */}
-            <div className="bg-white">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+            <div className="bg-gray-50 py-8 sm:py-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8 lg:p-12">
 
                     {/* Heading */}
                     <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-600">
@@ -81,7 +82,7 @@ export default function PrivacyPolicyPage() {
                         By using our website, you consent to the collection and use of information
                         as described in this privacy policy.
                     </p>
-
+                    </div>
                 </div>
             </div>
         </div>

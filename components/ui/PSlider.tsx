@@ -166,7 +166,7 @@ export default function PSlider({
 
   return (
     <div className={containerClassName}>
-      <div className='xl:max-w-7xl max-w-[90vw] mx-auto'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         {(title || showSeeAll) && (
           <div className='flex items-center justify-between mb-6'>
             {title && (
@@ -174,15 +174,6 @@ export default function PSlider({
                 {title}
               </h2>
             )}
-            {/* {showSeeAll && (
-              <button
-                onClick={onSeeAllClick}
-                className='text-xs lg:text-sm text-gray-600 hover:text-gray-900 flex items-center gap-1 cursor-pointer'
-              >
-                See All
-                <ChevronRight className='w-4 h-4' />
-              </button>
-            )} */}
           </div>
         )}
 

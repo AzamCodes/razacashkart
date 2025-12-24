@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import {
   HelpCircle,
   Zap,
@@ -182,8 +183,8 @@ export default function SimpleFAQComponent() {
   ];
 
   return (
-    <div className='w-full bg-gray-200 py-8 sm:py-12 px-4 sm:px-6 lg:px-8'>
-      <div className='max-w-4xl mx-auto'>
+    <div className='w-full bg-gray-50 py-8 sm:py-12'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         {/* Header (Responsive Title Size) */}
         <div className='text-center mb-8 sm:mb-10'>
           <h1 className='text-2xl sm:text-3xl font-extrabold text-gray-900 mb-2'>
@@ -255,9 +256,11 @@ export default function SimpleFAQComponent() {
           <p className='text-base text-gray-700 mb-3 sm:mb-4'>
             Still can&apos;t find the answer you&apos;re looking for?
           </p>
-          <button className='inline-flex items-center justify-center px-5 py-2 text-sm sm:text-base border border-transparent font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-md'>
-            Contact Support
-          </button>
+          <Link href='/contact'>
+            <button className='inline-flex items-center justify-center px-5 py-2 text-sm sm:text-base border border-transparent font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors shadow-md'>
+              Contact Support
+            </button>
+          </Link>
         </div>
       </div>
     </div>

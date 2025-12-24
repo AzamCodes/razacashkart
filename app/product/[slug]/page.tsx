@@ -65,8 +65,8 @@ export default async function ProductDetail({
   const topSellingProducts = products.filter((p) => p.topSelling).slice(0, 4);
 
   return (
-    <div className='bg-zinc-50 min-h-screen'>
-      <div className='xl:max-w-7xl max-w-[90vw] w-full mx-auto px-0 py-8'>
+    <div className='bg-gray-50 min-h-screen py-8 sm:py-12'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-lg p-6 mb-8 shadow-sm'>
           <ProductImageGallery images={product.images} />
           <ProductInfo product={product} />

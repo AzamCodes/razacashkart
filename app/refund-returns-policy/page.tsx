@@ -3,10 +3,10 @@ import { ChevronRight } from "lucide-react";
 
 export default function ReturnRefundPolicyPage() {
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-gray-50">
             {/* Breadcrumb */}
-            <div className="border-b border-gray-200 bg-gray-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div className="border-b border-gray-200 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                     <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
                         <Link href="/" className="hover:text-blue-600 transition-colors">
                             Home
@@ -20,8 +20,9 @@ export default function ReturnRefundPolicyPage() {
             </div>
 
             {/* Content Rail */}
-            <div className="bg-white">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+            <div className="bg-gray-50 py-8 sm:py-12">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="bg-white rounded-lg shadow-sm p-6 sm:p-8 lg:p-12">
 
                     {/* Heading */}
                     <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-600">
@@ -122,7 +123,7 @@ export default function ReturnRefundPolicyPage() {
                         during checkout. For Cash on Delivery (COD) orders, refunds will be
                         transferred directly to the customer’s bank account.
                     </p>
-
+                    </div>
                 </div>
             </div>
         </div>

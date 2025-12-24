@@ -1355,8 +1355,8 @@ export default function HeroSlider() {
   // const mainSlide = mainSlides[currentMainSlide];
 
   return (
-    <div className='w-full bg-gray-200 py-12 px-0'>
-      <div className='xl:max-w-7xl max-w-[90vw] mx-auto'>
+    <div className='w-full bg-gray-50 py-8 sm:py-12'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex flex-col lg:flex-row gap-6'>
           {/* === MAIN SLIDER (SWIPER with fade effect) === */}
           <div className='flex-1 relative group rounded-2xl overflow-hidden shadow-2xl'>

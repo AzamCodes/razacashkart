@@ -107,10 +107,18 @@ export default function NavbarF() {
 
           {/* Desktop Category Dropdown */}
           <div className='hidden md:flex items-center gap-5 xl:gap-10'>
-            <div className='hidden md:flex items-center cursor-pointer hover:text-blue-600 gap-1 xl:gap-2'>
+            <Link href='/contact' className='text-gray-700 hover:text-blue-600 transition-colors font-medium'>
+              Contact Us
+            </Link>
+            <a 
+              href='https://wa.me/919321888689' 
+              target='_blank' 
+              rel='noopener noreferrer'
+              className='hidden md:flex items-center cursor-pointer hover:text-blue-600 gap-1 xl:gap-2 transition-colors'
+            >
               <Phone className='h-5 w-5 mt-1' />
               +91 9321888689
-            </div>
+            </a>
             <CategoryMenuF />
           </div>
 
@@ -130,6 +138,27 @@ export default function NavbarF() {
                     className="w-full" 
                     onSearch={() => setMobileMenuOpen(false)}
                   />
+
+                  {/* Mobile Contact Link */}
+                  <Link 
+                    href='/contact' 
+                    className='text-gray-700 hover:text-blue-600 transition-colors font-medium py-2'
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Contact Us
+                  </Link>
+
+                  {/* Mobile WhatsApp Link */}
+                  <a 
+                    href='https://wa.me/919321888689' 
+                    target='_blank' 
+                    rel='noopener noreferrer'
+                    className='flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors font-medium py-2'
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <Phone className='h-5 w-5' />
+                    +91 9321888689
+                  </a>
 
                   {/* Mobile Category Dropdown */}
                   <CategoryMenuF />
