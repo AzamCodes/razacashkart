@@ -137,6 +137,7 @@ export default function NavbarF() {
                     isMobile 
                     className="w-full" 
                     onSearch={() => setMobileMenuOpen(false)}
+                    autoFocus={false}
                   />
 
                   {/* Mobile Contact Link */}

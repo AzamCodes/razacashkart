@@ -21,13 +21,15 @@ interface SearchWithSuggestionsProps {
   className?: string;
   isMobile?: boolean;
   onSearch?: () => void;
+  autoFocus?: boolean;
 }
 
 export default function SearchWithSuggestions({ 
   placeholder = "Search for Laptop", 
   className = "",
   isMobile = false,
-  onSearch
+  onSearch,
+  autoFocus = true
 }: SearchWithSuggestionsProps) {
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(() => searchParams.get('q') || "");
@@ -145,6 +147,7 @@ export default function SearchWithSuggestions({
           }}
           onKeyDown={handleKeyDown}
           onFocus={() => setShowSuggestions(true)}
+          autoFocus={autoFocus}
           className={`w-full ${
             isMobile 
               ? 'px-4 py-2 pr-12' 
